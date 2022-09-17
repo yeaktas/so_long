@@ -6,18 +6,29 @@
 /*   By: yaktas <yaktas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 15:12:27 by yaktas            #+#    #+#             */
-/*   Updated: 2022/09/17 16:06:55 by yaktas           ###   ########.fr       */
+/*   Updated: 2022/09/17 18:22:35 by yaktas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minilibx_opengl/mlx.h"
 
+typedef struct	s_vars {
+	void	*mlx;
+	void	*win;
+}				t_vars;
+
+int	close(int keycode, t_vars *vars)
+{
+	mlx_destroy_window(vars->mlx, vars->win);
+	return (0);
+}
+
 int	main(void)
 {
-	void	*img;
-	void	*mlx;
+	t_vars	vars;
 
-	mlx = mlx_init();
-	img = mlx_new_window(mlx, 400, 500, "isim");
-	mlx_loop(mlx);
+	vars.mlx = mlx_init();
+	vars.win = mlx_new_window(vars.mlx, 1920, 1080, "Hello world!");
+	mlx_hook(vars.win, 2, 1L<<1, close, &vars);
+	mlx_loop(vars.mlx);
 }
