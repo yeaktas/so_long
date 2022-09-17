@@ -12,7 +12,7 @@ $(NAME) : $(MINILIBX) $(OBJS)
 	$(CC) $(OFLAGS) $(FLAGS) $(OBJS) -o $(NAME) minilibx_opengl/libmlx.a
 
 $(MINILIBX):
-	make -C minilibx
+	make -C minilibx_opengl
 
 re: fclean all
 
