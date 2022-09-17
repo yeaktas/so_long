@@ -23,7 +23,7 @@ fclean:
 
 git: 
 	git add .
-	git commit -m "$m"
+	git commit -m "$c"
 	git push
 
 .PHONY: clean run fclean re all git
