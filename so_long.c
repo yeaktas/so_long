@@ -6,11 +6,11 @@
 /*   By: yaktas <yaktas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 15:12:27 by yaktas            #+#    #+#             */
-/*   Updated: 2022/08/31 15:18:58 by yaktas           ###   ########.fr       */
+/*   Updated: 2022/09/17 15:33:16 by yaktas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
+#include "minilibx_opengl/mlx.h"
 
 int	main(void)
 {
@@ -18,5 +18,6 @@ int	main(void)
 	void	*mlx;
 
 	mlx = mlx_init();
-	img = mlx_new_image(mlx, 1920, 1080);
+	img = mlx_new_window(mlx, 400, 500, "isim");
+	mlx_loop(mlx);
 }
