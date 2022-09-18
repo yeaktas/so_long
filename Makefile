@@ -27,6 +27,6 @@ fclean:
 git: 
 	git add .
 	git commit -m "$c"
-	git push
+	git push git@github.com:yeaktas/so_long.git
 
 .PHONY: clean run fclean re all git
