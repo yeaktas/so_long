@@ -1,9 +1,9 @@
-CC	= gcc
+CC	= gcc -g
 MINILIBX	= minilibx_opengl/libmlx.a
 NAME 		= so_long	
 FLAGS		= -Wall -Wextra -Werror
 OFLAGS		= -framework OpenGL -framework AppKit
-SRCS 		= so_long.c
+SRCS 		= $(wildcard *.c)
 OBJS 		= $(SRCS:.c=.o)
 
 all : $(NAME)
@@ -11,10 +11,8 @@ all : $(NAME)
 $(NAME) : $(MINILIBX) $(OBJS)
 	$(CC) $(OFLAGS) $(FLAGS) $(OBJS) -o $(NAME) minilibx_opengl/libmlx.a
 
-
 $(MINILIBX):
 	make -C minilibx_opengl
-
 
 re: fclean all
 

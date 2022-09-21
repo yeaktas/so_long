@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   checkers.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yaktas <yaktas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/31 15:12:27 by yaktas            #+#    #+#             */
-/*   Updated: 2022/09/21 00:50:37 by yaktas           ###   ########.fr       */
+/*   Created: 2022/09/20 23:33:01 by yaktas            #+#    #+#             */
+/*   Updated: 2022/09/21 00:50:15 by yaktas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-typedef struct	s_vars {
-	void	*mlx;
-	void	*win;
-}				t_vars;
-
-int	main(int ac, char **av)
+int ft_strlen(char *len)
 {
-	t_vars	vars;
-	void *img;
-	int x, y;
-	if(ac == 2)
-	{	
-		vars.mlx = mlx_init();
-		ber_checker(av[1]);
-		vars.win = mlx_new_window(vars.mlx, 200, 200, "so_long");
-		img = mlx_xpm_file_to_image(vars.mlx, "img/1wall.xpm", &x, &y);
-		mlx_put_image_to_window(vars.mlx, vars.win, img, 0, 0);
-		mlx_loop(vars.mlx);
-	}
-	write(1, "eksik arguman", 13);
+	int i = 0;
+	while(len[i])
+		i++;
+	return (i);
+}
+
+void ber_checker(char *str)
+{
+	int i;
+	i = ft_strlen(str);;
+	if ((str[i - 1] == 'r') && (str[i - 2] == 'e') && (str[i - 3] == 'b') && (str[i - 4] == '.'))
+		write(1, "everything its ok", 17);
+	else
+		write(1, "hatali map", 10);
 }
