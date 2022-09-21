@@ -1,31 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yaktas <yaktas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/31 15:12:27 by yaktas            #+#    #+#             */
-/*   Updated: 2022/09/21 15:08:55 by yaktas           ###   ########.fr       */
+/*   Created: 2022/03/14 11:25:12 by yaktas            #+#    #+#             */
+/*   Updated: 2022/03/15 12:37:05 by yaktas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
-
-int	main(int ac, char **av)
+#include "libft.h"
+//malloc ile yer acip icine str yaziyor.
+char	*ft_strdup(const char *str)
 {
-	t_main	main;
-	int		x;
-	int		y;
+	char	*m;
+	size_t	i;
+	size_t	j;
 
-	if (ac == 2)
-	{	
-		main.mlx = mlx_init();
-		ber_checker(av[1]);
-		main.win = mlx_new_window(main.mlx, 1920, 1080, "so_long");
-		main.img = mlx_xpm_file_to_image(main.mlx, "img/1wall.xpm", &x, &y);
-		mlx_put_image_to_window(main.mlx, main.win, main.img, 32, 32);
-		mlx_loop(main.mlx);
+	i = 0;
+	j = ft_strlen(str);
+	m = (char *)malloc(j + 1);
+	if (!m)
+		return (0);
+	while (str[i])
+	{
+		m[i] = str[i];
+		i++;
 	}
-	write(1, "eksik arguman", 13);
+	m[i] = '\0';
+	return (m);
 }
+
+/* int	main(void)
+{
+	char a[] = "emre";
+	printf("%s", ft_strdup(a));
+} */
