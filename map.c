@@ -6,7 +6,7 @@
 /*   By: yaktas <yaktas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 14:43:00 by yaktas            #+#    #+#             */
-/*   Updated: 2022/09/21 16:35:11 by yaktas           ###   ########.fr       */
+/*   Updated: 2022/09/22 12:49:37 by yaktas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,16 @@ char	**map_split(char *buffer, t_main *main)
 	return (map);
 }
 
-char	**map_alma(char *bername, t_main *main)
+// bir dosyaya girdi çıktı yapabilmek için dosyayı açabilmemiz gerekir. açık olan dosyayı tekrar kullanabilmek
+// içinde bir yerde tutmamız gerekir. bunun için int tipinde bir değişken kullanıyoruz. Bu değişkenin adına
+// file descriptor(fd) adını veriyoruz.
+// open fonksiyonun alacağı degerler dosya yolu ve flagler.
+// read(fd, buffer, x) fonksiyonu fdden x kadar okuyup buffera yazdırıyor. hata olursa -1 return ediyor.
+
+//char **map_init(char *bername, t_main *main)
+char *map_init(char *bername)
 {
-	char	**map;
+	//char	**map;
 	char	buffer[10000];
 	int		i;
 	int		bytes;
@@ -106,7 +113,12 @@ char	**map_alma(char *bername, t_main *main)
 		i++;
 	}
 	buffer[i] = '\0';
-	map = map_split(buffer, main);
+	//map = map_split(buffer, main);
 	close(fd);
 	return (map);
+}
+
+int main(void)
+{
+	map_init("maps/map1.ber", )
 }
