@@ -6,7 +6,7 @@
 /*   By: yaktas <yaktas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 14:43:00 by yaktas            #+#    #+#             */
-/*   Updated: 2022/09/22 12:56:20 by yaktas           ###   ########.fr       */
+/*   Updated: 2022/09/22 15:50:42 by yaktas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,15 +90,16 @@ char	**map_split(char *buffer, t_main *main)
 // open fonksiyonun alacağı degerler dosya yolu ve flagler.
 // read(fd, buffer, x) fonksiyonu fdden x kadar okuyup buffera yazdırıyor. hata olursa -1 return ediyor.
 
-//char **map_init(char *bername, t_main *main)
-char *map_init(char *bername)
+char **map_init(char *bername, t_main *main)
+//char *map_init(char *bername)
 {
-	//char	**map;
+	char	**map;
 	char	buffer[10000];
 	int		i;
 	int		bytes;
 	int		fd;
 
+	//buffer = (char *)malloc(sizeof(char) * 10000);
 	fd = open(bername, O_RDONLY);
 	i = 0;
 	bytes = 1;
@@ -113,13 +114,16 @@ char *map_init(char *bername)
 		i++;
 	}
 	buffer[i] = '\0';
-	//map = map_split(buffer, main);
+	map = map_split(buffer, main);
 	close(fd);
 	return (map);
+	//return (buffer);
 }
 
 int main(void)
 {
-	map_init("maps/map1.ber");
-	
+	char *a;
+	a = map_init("maps/map1.ber");
+	printf("%s", a);
+	return (0);
 }
