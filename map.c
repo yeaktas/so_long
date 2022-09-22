@@ -6,7 +6,7 @@
 /*   By: yaktas <yaktas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 14:43:00 by yaktas            #+#    #+#             */
-/*   Updated: 2022/09/22 12:49:37 by yaktas           ###   ########.fr       */
+/*   Updated: 2022/09/22 12:56:20 by yaktas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,5 +120,6 @@ char *map_init(char *bername)
 
 int main(void)
 {
-	map_init("maps/map1.ber", )
+	map_init("maps/map1.ber");
+	
 }
