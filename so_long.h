@@ -8,25 +8,41 @@
 # include <unistd.h>
 # include <fcntl.h>
 
+# define PIXEL 32
+
+typedef struct s_sprite
+{
+	int		sprite_h;
+	int		sprite_w;
+	void	*tile;
+	void	*exit;
+	void	*coin;
+	void	*player;
+	void	*wall;
+
+}	t_sprite;
 
 typedef struct s_map
 {
 	char **map;
-	char *yedekmap;
 	int x;
 	int y;
-} t_map;
+}	t_map;
 
 typedef struct	s_main {
-	void	*mlx;
-	void	*win;
-	void	*img;
-	int		pcount;
-	int		ccount;
-	int		ecount;
-	t_map	*map;
-} t_main;
+	void		*mlx;
+	void		*win;
+	void		*img;
+	int			pcount;
+	int			ccount;
+	int			ecount;
+	int			mcount;
+	t_map		*map;
+	t_sprite	*sprite;
+}	t_main;
 
 void	ber_checker(char *str);
+char	**map_init(char *bername, t_main *main);
+t_main	*main_init(char *path);
 
 #endif

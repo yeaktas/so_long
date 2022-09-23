@@ -6,7 +6,7 @@
 /*   By: yaktas <yaktas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 14:43:00 by yaktas            #+#    #+#             */
-/*   Updated: 2022/09/22 15:50:42 by yaktas           ###   ########.fr       */
+/*   Updated: 2022/09/23 16:58:32 by yaktas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,9 @@ int	column_count(char *buffer)
 	}
 	return (column + 1);
 }
+
+//string dizisi oluşturuyoruz. 
+//aynı zamanda E,P,C countu buluyoruz.
 
 char	**map_split2(t_main *main, int column, int line, char *buffer)
 {
@@ -99,7 +102,6 @@ char **map_init(char *bername, t_main *main)
 	int		bytes;
 	int		fd;
 
-	//buffer = (char *)malloc(sizeof(char) * 10000);
 	fd = open(bername, O_RDONLY);
 	i = 0;
 	bytes = 1;
@@ -117,13 +119,5 @@ char **map_init(char *bername, t_main *main)
 	map = map_split(buffer, main);
 	close(fd);
 	return (map);
-	//return (buffer);
 }
 
-int main(void)
-{
-	char *a;
-	a = map_init("maps/map1.ber");
-	printf("%s", a);
-	return (0);
-}

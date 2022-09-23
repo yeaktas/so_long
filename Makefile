@@ -32,5 +32,6 @@ git:
 
 norm:
 	norminette *.c
+	norminette *.h
 
 .PHONY: clean run fclean re all git d norm
