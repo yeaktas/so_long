@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checkers.c                                         :+:      :+:    :+:   */
+/*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yaktas <yaktas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 23:33:01 by yaktas            #+#    #+#             */
-/*   Updated: 2022/09/24 15:12:22 by yaktas           ###   ########.fr       */
+/*   Updated: 2022/09/24 18:53:35 by yaktas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,28 +22,47 @@ void	ber_checker(char *path)
 		write(1, ".ber ile bitiyor\n", 17);
 	else
 	{
-		write(1, "hatali map ismi", 10);
+		write(1, "Map name is wrong!", 18);
 		exit(0);
 	}
 }
 
-void ft_error(char *errormsg, t_main *main)
+/* void map_check_top_bottom(t_main *main)
 {
 	int i;
 
 	i = 0;
-	while (errormsg[i])
+	write(1, "as", 2);
+	while (i < main->map->x)
 	{
-		write(1, &errormsg[i], 1);
+		if(main->map->map[i][0] != '1')
+			ft_error("Error!\nMap checker: The top is wrong.", main);
+		else if(main->map->map[main->map->y - 1][i] != '1')	
+			ft_error("Error!\nMap checker: The bottom is wrong.", main);
 		i++;
 	}
-	write(1, "\n", 1);
-	exit(0);
-}
+	i = 0;
+	while (i < main->map->y - 1)
+	{
+		if (main->map->map[i][0] != '1')
+			ft_error("Error\nMAP: (LEFT)", main);
+		else if (main->map->map[i][main->map->x - 1] != '1')
+			ft_error("Error\nMAP: (RIGHT)", main);
+		i++;
+	}
+} */
 
 int map_check(t_main *main)
 {
-	if(main->ecount <=0)
+	if(main->ecount <= 0)
 		ft_error("Error\nExit not found.", main);
-	
+	else if(main->ecount > 1)
+		ft_error("Error\nThere are multiple exits.", main);
+	else if (main->ccount <= 0)
+		ft_error("Error\nCollectible not found.", main);
+	else if(main->pcount <= 0)
+		ft_error("Error\nPlayer not found.", main);
+	else if(main->pcount > 1)
+		ft_error("Error\nThere are multiple player.", main);
+	return (1);
 }

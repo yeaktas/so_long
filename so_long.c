@@ -6,7 +6,7 @@
 /*   By: yaktas <yaktas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 15:12:27 by yaktas            #+#    #+#             */
-/*   Updated: 2022/09/24 15:11:16 by yaktas           ###   ########.fr       */
+/*   Updated: 2022/09/24 18:39:11 by yaktas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ int	main(int ac, char **av)
 	{
 		ber_checker(av[1]);
 		main = main_init(av[1]);
-
+		map_check(main);
+		
 		mlx_loop(main->mlx);
 		while(1);
 	}

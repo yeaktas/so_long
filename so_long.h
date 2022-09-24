@@ -19,7 +19,6 @@ typedef struct s_sprite
 	void	*coin;
 	void	*player;
 	void	*wall;
-
 }	t_sprite;
 
 typedef struct s_map
@@ -41,8 +40,18 @@ typedef struct	s_main {
 	t_sprite	*sprite;
 }	t_main;
 
+//Checker
 void	ber_checker(char *str);
-char	**map_init(char *bername, t_main *main);
+void	map_check(t_main *main);
+
+//Init
 t_main	*main_init(char *path);
+
+//Map
+char	**map_init(char *bername, t_main *main);
+
+//Utils
+void	ft_free(t_main *main);
+void	ft_error(char *errormsg, t_main *main);
 
 #endif
