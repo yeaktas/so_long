@@ -6,7 +6,7 @@
 /*   By: yaktas <yaktas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 17:29:53 by yaktas            #+#    #+#             */
-/*   Updated: 2022/09/23 20:13:48 by yaktas           ###   ########.fr       */
+/*   Updated: 2022/09/24 15:11:20 by yaktas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ t_main *main_init(char *path)
 	main->mcount = 0;
 	main->map->map = map_init(path, main);
 	main->mlx = mlx_init();
+	xpm_to_image(main);
 	main->win = mlx_new_window(main->mlx, main->map->x * PIXEL, main->map->y * PIXEL, "so_long");
 	return (main);
 }

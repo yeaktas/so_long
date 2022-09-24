@@ -1,30 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yaktas <yaktas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/31 15:12:27 by yaktas            #+#    #+#             */
-/*   Updated: 2022/09/24 15:11:16 by yaktas           ###   ########.fr       */
+/*   Created: 2022/09/24 14:40:09 by yaktas            #+#    #+#             */
+/*   Updated: 2022/09/24 15:11:22 by yaktas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main(int ac, char **av)
+void ft_free(t_main *main)
 {
-	t_main	*main;
-
-	if (ac == 2)
-	{
-		ber_checker(av[1]);
-		main = main_init(av[1]);
-
-		mlx_loop(main->mlx);
-		while(1);
-	}
-	write(1, "Wrong Argument", 14);
-	//system("leaks so_long");
-	return (0);
+	free(main->mlx);
+	free(main->win);
+	free(main->map);
+	free(main->sprite);
 }
