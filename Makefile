@@ -3,7 +3,7 @@ MINILIBX	= minilibx_opengl/libmlx.a
 NAME 		= so_long	
 FLAGS		= -Wall -Wextra -Werror
 OFLAGS		= -framework OpenGL -framework AppKit
-SRCS 		=  $(wildcard *.c)
+SRCS 		= $(wildcard *.c)
 OBJS 		= $(SRCS:.c=.o) 
 #OBJMOVE		= $(wildcard *.o) 
 
