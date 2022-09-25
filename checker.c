@@ -6,7 +6,7 @@
 /*   By: yaktas <yaktas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 23:33:01 by yaktas            #+#    #+#             */
-/*   Updated: 2022/09/25 20:25:02 by yaktas           ###   ########.fr       */
+/*   Updated: 2022/09/25 20:48:38 by yaktas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ int map_check(t_main *main)
 		ft_error("Error\nPlayer not found.", main);
 	else if(main->pcount > 1)
 		ft_error("Error\nThere are multiple player.", main);
-	
+	map_check_top_bottom(main);
+	map_check_right_left(main);
 	return (1);
 }
