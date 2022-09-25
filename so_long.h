@@ -42,7 +42,7 @@ typedef struct	s_main {
 
 //Checker
 void	ber_checker(char *str);
-void	map_check(t_main *main);
+int		map_check(t_main *main);
 
 //Init
 t_main	*main_init(char *path);
