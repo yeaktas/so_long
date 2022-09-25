@@ -6,7 +6,7 @@
 /*   By: yaktas <yaktas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 23:33:01 by yaktas            #+#    #+#             */
-/*   Updated: 2022/09/24 18:53:35 by yaktas           ###   ########.fr       */
+/*   Updated: 2022/09/25 20:25:02 by yaktas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,30 +27,50 @@ void	ber_checker(char *path)
 	}
 }
 
-/* void map_check_top_bottom(t_main *main)
+
+int map_check_right_left(t_main *main)
 {
 	int i;
 
 	i = 0;
-	write(1, "as", 2);
-	while (i < main->map->x)
-	{
-		if(main->map->map[i][0] != '1')
-			ft_error("Error!\nMap checker: The top is wrong.", main);
-		else if(main->map->map[main->map->y - 1][i] != '1')	
-			ft_error("Error!\nMap checker: The bottom is wrong.", main);
-		i++;
-	}
-	i = 0;
 	while (i < main->map->y - 1)
 	{
 		if (main->map->map[i][0] != '1')
-			ft_error("Error\nMAP: (LEFT)", main);
+		{
+			ft_error("Error\nMap checker: Left is wrong.", main);
+			return (0);
+		}
 		else if (main->map->map[i][main->map->x - 1] != '1')
-			ft_error("Error\nMAP: (RIGHT)", main);
+		{
+			ft_error("Error\nMap checker: Right is wrong.", main);
+			return (0);
+		}
 		i++;
 	}
-} */
+	return (1);
+}
+
+int map_check_top_bottom(t_main *main)
+{
+	int i;
+
+	i = 0;
+	while (i < main->map->x)
+	{
+		if(main->map->map[i][0] != '1')
+		{
+			ft_error("Error!\nMap checker: The top is wrong.", main);
+			return (0);
+		}
+		else if(main->map->map[main->map->y - 1][i] != '1')
+		{
+			ft_error("Error!\nMap checker: The bottom is wrong.", main);
+			return (0);
+		}
+		i++;
+	}
+	return (1);
+}
 
 int map_check(t_main *main)
 {
@@ -64,5 +84,6 @@ int map_check(t_main *main)
 		ft_error("Error\nPlayer not found.", main);
 	else if(main->pcount > 1)
 		ft_error("Error\nThere are multiple player.", main);
+	
 	return (1);
 }
