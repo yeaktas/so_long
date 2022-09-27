@@ -6,11 +6,11 @@
 /*   By: yaktas <yaktas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 03:44:26 by yaktas            #+#    #+#             */
-/*   Updated: 2022/09/27 18:32:32 by yaktas           ###   ########.fr       */
+/*   Updated: 2022/09/27 18:41:51 by yaktas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "incs/so_long.h"
+#include "../incs/so_long.h"
 
 void	ft_up(int keycode, t_main *main)
 {

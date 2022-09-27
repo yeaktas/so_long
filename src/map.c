@@ -6,11 +6,11 @@
 /*   By: yaktas <yaktas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 14:43:00 by yaktas            #+#    #+#             */
-/*   Updated: 2022/09/27 18:32:33 by yaktas           ###   ########.fr       */
+/*   Updated: 2022/09/27 18:41:55 by yaktas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "incs/so_long.h"
+#include "../incs/so_long.h"
 
 int	line_count(char *buffer)
 {

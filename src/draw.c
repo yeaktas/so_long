@@ -6,11 +6,11 @@
 /*   By: yaktas <yaktas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 00:57:50 by yaktas            #+#    #+#             */
-/*   Updated: 2022/09/27 18:32:30 by yaktas           ###   ########.fr       */
+/*   Updated: 2022/09/27 18:41:46 by yaktas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "incs/so_long.h"
+#include "../incs/so_long.h"
 
 void	convert(t_main *main)
 {
