@@ -6,11 +6,11 @@
 /*   By: yaktas <yaktas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 07:38:48 by yaktas            #+#    #+#             */
-/*   Updated: 2022/09/27 18:32:34 by yaktas           ###   ########.fr       */
+/*   Updated: 2022/09/27 18:42:00 by yaktas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "incs/so_long.h"
+#include "../incs/so_long.h"
 
 void	render_player2(t_main *main, int x, int y, int i)
 {
