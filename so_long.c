@@ -6,11 +6,25 @@
 /*   By: yaktas <yaktas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 15:12:27 by yaktas            #+#    #+#             */
-/*   Updated: 2022/09/24 18:39:11 by yaktas           ###   ########.fr       */
+/*   Updated: 2022/09/27 12:10:35 by yaktas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+t_main	*main_init(char *path)
+{
+	t_main	*main;
+
+	main = (t_main *) malloc(sizeof(t_main));
+	main->map = (t_map *)malloc(sizeof(t_map));
+	main->sprite = (t_sprite *)malloc(sizeof(t_sprite));
+	main->mcount = 0;
+	main->map->map = map_init(path, main);
+	main->mlx = mlx_init();
+	main->win = mlx_new_window(main->mlx, main->map->x * PIXEL, main->map->y * PIXEL, "so_long");
+	return (main);
+}
 
 int	main(int ac, char **av)
 {
@@ -21,11 +35,12 @@ int	main(int ac, char **av)
 		ber_checker(av[1]);
 		main = main_init(av[1]);
 		map_check(main);
-		
+		draw_map(main);
+		mlx_hook(main->win, 2, 1L << 0, key_hook, main);
+		mlx_loop_hook(main->mlx, render, main);
+		mlx_hook(main->win, 17, 0, ft_x_button, main);
 		mlx_loop(main->mlx);
-		while(1);
 	}
 	write(1, "Wrong Argument", 14);
-	//system("leaks so_long");
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: yaktas <yaktas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 14:43:00 by yaktas            #+#    #+#             */
-/*   Updated: 2022/09/24 15:11:18 by yaktas           ###   ########.fr       */
+/*   Updated: 2022/09/27 12:03:39 by yaktas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,6 @@ int	column_count(char *buffer)
 	}
 	return (column + 1);
 }
-
-//string dizisi oluşturuyoruz. 
-//aynı zamanda E,P,C countu buluyoruz.
 
 char	**map_split2(t_main *main, int column, int line, char *buffer)
 {
@@ -87,14 +84,7 @@ char	**map_split(char *buffer, t_main *main)
 	return (map);
 }
 
-// bir dosyaya girdi çıktı yapabilmek için dosyayı açabilmemiz gerekir. açık olan dosyayı tekrar kullanabilmek
-// içinde bir yerde tutmamız gerekir. bunun için int tipinde bir değişken kullanıyoruz. Bu değişkenin adına
-// file descriptor(fd) adını veriyoruz.
-// open fonksiyonun alacağı degerler dosya yolu ve flagler.
-// read(fd, buffer, x) fonksiyonu fdden x kadar okuyup buffera yazdırıyor. hata olursa -1 return ediyor.
-
-char **map_init(char *bername, t_main *main)
-//char *map_init(char *bername)
+char	**map_init(char *bername, t_main *main)
 {
 	char	**map;
 	char	buffer[10000];
@@ -110,7 +100,7 @@ char **map_init(char *bername, t_main *main)
 		bytes = read(fd, &buffer[i], 1);
 		if (bytes == -1)
 		{
-			write(1, "map okuma hatali", 16);
+			ft_error("Error\nMap could not be read.", main);
 			exit(1);
 		}
 		i++;
@@ -120,4 +110,3 @@ char **map_init(char *bername, t_main *main)
 	close(fd);
 	return (map);
 }
-
