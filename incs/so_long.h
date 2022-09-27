@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yaktas <yaktas@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/27 18:10:02 by yaktas            #+#    #+#             */
+/*   Updated: 2022/09/27 18:20:21 by yaktas           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "minilibx_opengl/mlx.h"
-# include "Libft/libft.h"
+# include "../minilibx_opengl/mlx.h"
+# include "../Libft/libft.h"
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -28,12 +40,13 @@ typedef struct s_sprite
 
 typedef struct s_map
 {
-	char **map;
-	int x;
-	int y;
+	char	**map;
+	int		x;
+	int		y;
 }	t_map;
 
-typedef struct	s_main {
+typedef struct s_main
+{
 	void		*mlx;
 	void		*win;
 	void		*img;

@@ -6,11 +6,11 @@
 /*   By: yaktas <yaktas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 14:40:09 by yaktas            #+#    #+#             */
-/*   Updated: 2022/09/27 12:01:34 by yaktas           ###   ########.fr       */
+/*   Updated: 2022/09/27 18:32:28 by yaktas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "incs/so_long.h"
 
 void	ft_free(t_main *main)
 {

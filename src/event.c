@@ -6,11 +6,11 @@
 /*   By: yaktas <yaktas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 03:44:26 by yaktas            #+#    #+#             */
-/*   Updated: 2022/09/27 12:38:17 by yaktas           ###   ########.fr       */
+/*   Updated: 2022/09/27 18:32:32 by yaktas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "incs/so_long.h"
 
 void	ft_up(int keycode, t_main *main)
 {
@@ -72,16 +72,16 @@ int	key_hook(int keycode, t_main *main)
 		exit(0);
 	}
 	else if (keycode == W && main->map->map
-			[main->player_y - 1][main->player_x] != '1')
+		[main->player_y - 1][main->player_x] != '1')
 		ft_up(keycode, main);
 	else if (keycode == A && main->map->map
-			[main->player_y][main->player_x - 1] != '1')
+		[main->player_y][main->player_x - 1] != '1')
 		ft_left(main);
 	else if (keycode == S && main->map->map
-			[main->player_y + 1][main->player_x] != '1')
+		[main->player_y + 1][main->player_x] != '1')
 		ft_down(main);
 	else if (keycode == D && main->map->map
-			[main->player_y][main->player_x + 1] != '1')
+		[main->player_y][main->player_x + 1] != '1')
 		ft_right(main);
 	return (0);
 }
