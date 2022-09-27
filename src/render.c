@@ -6,11 +6,11 @@
 /*   By: yaktas <yaktas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 07:38:48 by yaktas            #+#    #+#             */
-/*   Updated: 2022/09/27 11:59:28 by yaktas           ###   ########.fr       */
+/*   Updated: 2022/09/27 18:32:34 by yaktas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "incs/so_long.h"
 
 void	render_player2(t_main *main, int x, int y, int i)
 {
@@ -20,22 +20,30 @@ void	render_player2(t_main *main, int x, int y, int i)
 	while (j < main->map->x)
 	{
 		if (main->map->map[i][j] == '1')
-			mlx_put_image_to_window(main->mlx, main->win, main->sprite->wall, j * PIXEL, i * PIXEL);
+			mlx_put_image_to_window(
+				main->mlx, main->win,
+				main->sprite->wall, j * PIXEL, i * PIXEL);
 		else if (main->map->map[i][j] == '0' || main->map->map[i][j] == 'P')
-			mlx_put_image_to_window(main->mlx, main->win, main->sprite->tile, j * PIXEL, i * PIXEL);
+			mlx_put_image_to_window(
+				main->mlx, main->win,
+				main->sprite->tile, j * PIXEL, i * PIXEL);
 		else if (main->map->map[i][j] == 'E')
-			mlx_put_image_to_window(main->mlx, main->win, main->sprite->exit, j * PIXEL, i * PIXEL);
+			mlx_put_image_to_window(
+				main->mlx, main->win,
+				main->sprite->exit, j * PIXEL, i * PIXEL);
 		else if (main->map->map[i][j] == 'C')
-			mlx_put_image_to_window(main->mlx, main->win, main->sprite->coin, j * PIXEL, i * PIXEL);
+			mlx_put_image_to_window(
+				main->mlx, main->win,
+				main->sprite->coin, j * PIXEL, i * PIXEL);
 		j++;
 	}
 }
 
-int render_player(t_main *main)
+int	render_player(t_main *main)
 {
-	int x;
-	int y;
-	int i;
+	int	x;
+	int	y;
+	int	i;
 
 	i = 0;
 	x = main->player_x;
@@ -45,14 +53,16 @@ int render_player(t_main *main)
 		render_player2(main, x, y, i);
 		i++;
 	}
-	mlx_put_image_to_window(main->mlx, main->win, main->sprite->player, x * PIXEL, y * PIXEL);
+	mlx_put_image_to_window(
+		main->mlx, main->win, main->sprite->player, x * PIXEL, y * PIXEL);
 	return (0);
 }
 
-int render(t_main *main)
+int	render(t_main *main)
 {
 	render_player(main);
-	if (main->ccount == 0 && main->map->map[main->player_y][main->player_x] == 'E')
+	if (main->ccount == 0 && main->map->map
+		[main->player_y][main->player_x] == 'E')
 		key_hook(53, main);
 	return (0);
 }

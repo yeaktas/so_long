@@ -6,11 +6,11 @@
 /*   By: yaktas <yaktas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 15:12:27 by yaktas            #+#    #+#             */
-/*   Updated: 2022/09/27 12:10:35 by yaktas           ###   ########.fr       */
+/*   Updated: 2022/09/27 18:32:23 by yaktas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "incs/so_long.h"
 
 t_main	*main_init(char *path)
 {
@@ -22,7 +22,8 @@ t_main	*main_init(char *path)
 	main->mcount = 0;
 	main->map->map = map_init(path, main);
 	main->mlx = mlx_init();
-	main->win = mlx_new_window(main->mlx, main->map->x * PIXEL, main->map->y * PIXEL, "so_long");
+	main->win = mlx_new_window(
+			main->mlx, main->map->x * PIXEL, main->map->y * PIXEL, "so_long");
 	return (main);
 }
 

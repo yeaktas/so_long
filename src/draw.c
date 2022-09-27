@@ -6,11 +6,11 @@
 /*   By: yaktas <yaktas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 00:57:50 by yaktas            #+#    #+#             */
-/*   Updated: 2022/09/27 12:36:45 by yaktas           ###   ########.fr       */
+/*   Updated: 2022/09/27 18:32:30 by yaktas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "incs/so_long.h"
 
 void	convert(t_main *main)
 {
@@ -29,28 +29,40 @@ void	convert(t_main *main)
 			main->mlx, "./img/Edoor.xpm", &x, &y);
 }
 
-int	draw_map2(t_main *main, int i, int j)
+int	draw_map3(t_main *main, int i, int j)
 {
-	if (main->map->map[i][j] == '1')
-		mlx_put_image_to_window(main->mlx, main->win, main->sprite->wall, j * PIXEL, i * PIXEL);
-	else if (main->map->map[i][j] == '0')
-		mlx_put_image_to_window(main->mlx, main->win, main->sprite->tile, j * PIXEL, i * PIXEL);
-	else if (main->map->map[i][j] == 'P')
-	{
-		mlx_put_image_to_window(main->mlx, main->win, main->sprite->player, j * PIXEL, i * PIXEL);
-		main->player_y = i;
-		main->player_x = j;
-	}
-	else if (main->map->map[i][j] == 'E')
-		mlx_put_image_to_window(main->mlx, main->win, main->sprite->exit, j * PIXEL, i * PIXEL);
+	if (main->map->map[i][j] == 'E')
+		mlx_put_image_to_window(
+			main->mlx, main->win, main->sprite->exit, j * PIXEL, i * PIXEL);
 	else if (main->map->map[i][j] == 'C')
 	{
-		mlx_put_image_to_window(main->mlx, main->win, main->sprite->tile, j * PIXEL, i * PIXEL);
+		mlx_put_image_to_window(
+			main->mlx, main->win, main->sprite->tile, j * PIXEL, i * PIXEL);
 		mlx_put_image_to_window(
 			main->mlx, main->win, main->sprite->coin, j * PIXEL, i * PIXEL);
 	}
 	else
 		ft_error("Error\nWrong Character.", main);
+	return (j);
+}
+
+int	draw_map2(t_main *main, int i, int j)
+{
+	if (main->map->map[i][j] == '1')
+		mlx_put_image_to_window(
+			main->mlx, main->win, main->sprite->wall, j * PIXEL, i * PIXEL);
+	else if (main->map->map[i][j] == '0')
+		mlx_put_image_to_window(
+			main->mlx, main->win, main->sprite->tile, j * PIXEL, i * PIXEL);
+	else if (main->map->map[i][j] == 'P')
+	{
+		mlx_put_image_to_window(
+			main->mlx, main->win, main->sprite->player, j * PIXEL, i * PIXEL);
+		main->player_y = i;
+		main->player_x = j;
+	}
+	else
+		j = draw_map3(main, i, j);
 	j++;
 	return (j);
 }
