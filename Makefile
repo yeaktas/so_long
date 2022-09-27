@@ -5,13 +5,11 @@ FLAGS		= -Wall -Wextra -Werror
 OFLAGS		= -framework OpenGL -framework AppKit
 SRCS 		= $(wildcard src/*.c)
 OBJS 		= $(SRCS:.c=.o) 
-#OBJMOVE		= $(wildcard *.o) 
 
 all : $(NAME)
 
 $(NAME) : $(MINILIBX) $(OBJS) d
 	$(CC) $(OFLAGS) $(FLAGS) $(OBJS) -o $(NAME) minilibx_opengl/libmlx.a Libft/libft.a
-#mv $(OBJMOVE) obj
 
 $(MINILIBX):
 	make -C minilibx_opengl
