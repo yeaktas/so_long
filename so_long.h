@@ -9,16 +9,21 @@
 # include <fcntl.h>
 
 # define PIXEL 32
+# define ESC 53
+# define W 13
+# define A 0
+# define S 1
+# define D 2
 
 typedef struct s_sprite
 {
-	int		sprite_h;
-	int		sprite_w;
 	void	*tile;
 	void	*exit;
 	void	*coin;
 	void	*player;
 	void	*wall;
+	int		sprite_h;
+	int		sprite_w;
 }	t_sprite;
 
 typedef struct s_map
@@ -36,6 +41,8 @@ typedef struct	s_main {
 	int			ccount;
 	int			ecount;
 	int			mcount;
+	int			player_x;
+	int			player_y;
 	t_map		*map;
 	t_sprite	*sprite;
 }	t_main;
@@ -50,8 +57,20 @@ t_main	*main_init(char *path);
 //Map
 char	**map_init(char *bername, t_main *main);
 
+//Draw
+void	draw_map(t_main *main);
+void	sprite_draw(t_main *main, void *sprite, int x, int y);
+void	convert(t_main *main);
+
 //Utils
 void	ft_free(t_main *main);
 void	ft_error(char *errormsg, t_main *main);
+int		ft_x_button(t_main *main);
+
+//Event
+int		key_hook(int keycode, t_main *main);
+
+//Render
+int		render(t_main *main);
 
 #endif

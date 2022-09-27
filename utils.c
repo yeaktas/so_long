@@ -6,13 +6,13 @@
 /*   By: yaktas <yaktas@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 14:40:09 by yaktas            #+#    #+#             */
-/*   Updated: 2022/09/24 15:21:07 by yaktas           ###   ########.fr       */
+/*   Updated: 2022/09/27 12:01:34 by yaktas           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void ft_free(t_main *main)
+void	ft_free(t_main *main)
 {
 	free(main->mlx);
 	free(main->win);
@@ -20,9 +20,9 @@ void ft_free(t_main *main)
 	free(main->sprite);
 }
 
-void ft_error(char *errormsg, t_main *main)
+void	ft_error(char *errormsg, t_main *main)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (errormsg[i])
@@ -33,4 +33,11 @@ void ft_error(char *errormsg, t_main *main)
 	write(1, "\n", 1);
 	ft_free(main);
 	exit(0);
+}
+
+int	ft_x_button(t_main *main)
+{
+	mlx_destroy_image(main->mlx, main->win);
+	exit(0);
+	return (0);
 }
