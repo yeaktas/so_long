@@ -30,8 +30,9 @@ git:
 	git commit -m "$c"
 	git push git@github.com:yeaktas/so_long.git
 
+
 norm:
-	norminette *.c
-	norminette *.h
+	@norminette $(wildcard src/*.c)
+	@norminette $(wildcard incs/*.h)
 
 .PHONY: clean run fclean re all git d norm
