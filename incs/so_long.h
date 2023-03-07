@@ -13,19 +13,34 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "../minilibx_opengl/mlx.h"
+# if defined(__APPLE__) && defined(__MACH__)
+#  include "../minilibx_opengl/mlx.h"
+# else
+#  include "../minilibx-linux/mlx.h"
+# endif
+
 # include "../Libft/libft.h"
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
 
+# if defined(__APPLE__) && defined(__MACH__)
+#  define ESC 53
+#  define W 13
+#  define A 0
+#  define S 1
+#  define D 2
+# else
+#  define ESC 65307
+#  define W 119
+#  define A 97
+#  define S 115
+#  define D 100
+
+# endif
+
 # define PIXEL 32
-# define ESC 53
-# define W 13
-# define A 0
-# define S 1
-# define D 2
 
 typedef struct s_sprite
 {
