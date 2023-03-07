@@ -1,38 +1,85 @@
-CC	= gcc -g
-MINILIBX	= minilibx_opengl/libmlx.a
-NAME 		= so_long	
-FLAGS		= -Wall -Wextra -Werror
-OFLAGS		= -framework OpenGL -framework AppKit
-SRCS 		= $(wildcard src/*.c)
-OBJS 		= $(SRCS:.c=.o) 
+OS			= $(shell uname)
+LIBFTPATH	= Libft
 
-all : $(NAME)
+NAME		= so_long
+HEADER		= incs/so_long.h
 
-$(NAME) : $(MINILIBX) $(OBJS) d
-	$(CC) $(OFLAGS) $(FLAGS) $(OBJS) -o $(NAME) minilibx_opengl/libmlx.a Libft/libft.a
+BONUSNAME	= so_long_bonus
+BONUSHEADER	= so_long_bonus.h
 
-$(MINILIBX):
-	make -C minilibx_opengl
-d: 
-	make -C Libft
+# For MacOS
+MINILIBX	= minilibx_opengl/
+# For Linux
+ifeq ($(OS),Linux)
+    MINILIBX = minilibx-linux/
+endif
 
-re: fclean all
+CC			= gcc -g
+CFLAGS		= -Wall -Werror -Wextra
+RM			= rm -f
+ECHO		= echo
+
+# For MacOS
+OPENGL		= -framework OpenGL -framework AppKit
+
+# For MacOS
+MINILIBXCC	= -I mlx -L $(MINILIBX) -lmlx
+# For Linux
+ifeq ($(OS),Linux)
+    MINILIBXCC	= -L$(MINILIBX) -lmlx -lXext -lX11 -lm -lbsd
+endif
+
+COMPILEPRM	= $(MINILIBXCC) $(OPENGL) -o $(NAME) libft.a $(MINILIBX)/libmlx.a
+COMPILEPRMB	= $(MINILIBXCC) $(OPENGL) -o $(BONUSNAME) libft.a $(MINILIBX)/libmlx.a
+ifeq ($(OS),Linux)
+COMPILEPRM	= $(HEADER) $(MINILIBXCC) libft.a -o $(NAME)
+COMPILEPRMB = $(BONUSHEADER	$(MINILIBXCC) libft.a -o $(BONUSNAME)
+endif
+
+ALLFILES = $(wildcard src/*.c)
+
+MANDATORYFILES	= $(filter-out so_long_bonus.c, $(ALLFILES))
+BONUSFILES		= $(filter-out so_long.c, $(ALLFILES))
+
+MANDATORYOBJ	=	$(MANDATORYFILES:.c=.o)
+BONUSOBJ		=	$(BONUSFILES:.c=.o)
+
+start:
+			@make all
+
+all:		$(NAME)
+
+$(NAME):	$(MANDATORYOBJ)
+			@make -s -C $(MINILIBX)
+			@make -C $(LIBFTPATH)
+			@make bonus -C $(LIBFTPATH)
+			@cp $(LIBFTPATH)/libft.a .
+			@$(CC) $(CFLAGS) $(MANDATORYOBJ) $(COMPILEPRM)
+
+bonus:		$(BONUSNAME)
+
+$(BONUSNAME):	$(BONUSOBJ)
+			@make -s -C $(MINILIBX)
+			@make -C $(LIBFTPATH)
+			@make bonus -C $(LIBFTPATH)
+			@cp $(LIBFTPATH)/libft.a .
+			@$(CC) $(CFLAGS) $(BONUSOBJ) $(COMPILEPRMB)
 
 clean:
-	rm -rf $(OBJS)
-	rm -f minilibx_opengl/*.o
-fclean: clean
-	rm -rf $(NAME)
-	rm -rf minilibx_opengl/*.a
+			@$(RM) -r $(MANDATORYOBJ)
+			@$(RM) -r $(NAME)
+			@$(RM) -r $(BONUSOBJ)
+			@$(RM) -r $(BONUSNAME)
+			@make clean -C $(MINILIBX)
+			@make clean -C $(LIBFTPATH)
 
-git: 
-	git add .
-	git commit -m "$c"
-	git push git@github.com:yeaktas/so_long.git
+fclean:		clean
+			@$(RM) $(NAME)
+			@$(RM) -rf $(LIBFTPATH)/libft.a
+			@$(RM) -rf libft.a
 
 
-norm:
-	@norminette $(wildcard src/*.c)
-	@norminette $(wildcard incs/*.h)
+re:			fclean all
+			@$(ECHO) -n "$(GREEN)Cleaned and rebuilt everything for [so_long]!$(DEF_COLOR)\n"
 
-.PHONY: clean run fclean re all git d norm
+.PHONY:		all clean fclean re norm
