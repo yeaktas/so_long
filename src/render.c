@@ -12,7 +12,7 @@
 
 #include "../incs/so_long.h"
 
-void	render_player2(t_main *main, int x, int y, int i)
+void	render_player2(t_main *main, int i)
 {
 	int	j;
 
@@ -50,7 +50,7 @@ int	render_player(t_main *main)
 	y = main->player_y;
 	while (i < main->map->y)
 	{
-		render_player2(main, x, y, i);
+		render_player2(main, i);
 		i++;
 	}
 	mlx_put_image_to_window(
@@ -63,6 +63,6 @@ int	render(t_main *main)
 	render_player(main);
 	if (main->ccount == 0 && main->map->map
 		[main->player_y][main->player_x] == 'E')
-		key_hook(53, main);
+		key_hook(ESC, main);
 	return (0);
 }
