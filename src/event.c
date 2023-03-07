@@ -12,7 +12,7 @@
 
 #include "../incs/so_long.h"
 
-void	ft_up(int keycode, t_main *main)
+void	ft_up(t_main *main)
 {
 	main->player_y--;
 	main->mcount++;
@@ -73,7 +73,7 @@ int	key_hook(int keycode, t_main *main)
 	}
 	else if (keycode == W && main->map->map
 		[main->player_y - 1][main->player_x] != '1')
-		ft_up(keycode, main);
+		ft_up(main);
 	else if (keycode == A && main->map->map
 		[main->player_y][main->player_x - 1] != '1')
 		ft_left(main);
