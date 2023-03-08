@@ -69,6 +69,7 @@ typedef struct s_main
 	int			ccount;
 	int			ecount;
 	int			mcount;
+	int			read_count;
 	int			player_x;
 	int			player_y;
 	t_map		*map;
@@ -100,5 +101,8 @@ int		key_hook(int keycode, t_main *main);
 
 //Render
 int		render(t_main *main);
+
+//Pathfinder
+void	virtual_map(t_main *main);
 
 #endif
