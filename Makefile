@@ -82,4 +82,8 @@ fclean:		clean
 re:			fclean all
 			@$(ECHO) -n "$(GREEN)Cleaned and rebuilt everything for [so_long]!$(DEF_COLOR)\n"
 
+norm:
+	@norminette $(wildcard src/*.c)
+	@norminette $(wildcard incs/*.h)
+
 .PHONY:		all clean fclean re norm

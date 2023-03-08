@@ -14,8 +14,8 @@
 
 void	ft_free(t_main *main)
 {
-	free(main->mlx);
-	free(main->win);
+	//free(main->mlx);
+	//free(main->win);
 	free(main->map);
 	free(main->sprite);
 }
