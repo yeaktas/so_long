@@ -39,3 +39,16 @@ int	ft_x_button(t_main *main)
 	exit(0);
 	return (0);
 }
+
+void	virtual_map_free(int **v_map, t_main *main)
+{
+	int	i;
+
+	i = 0;
+	while (i < main->map->y)
+	{
+		free(v_map[i]);
+		i++;
+	}
+	free(v_map);
+}
