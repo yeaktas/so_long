@@ -55,7 +55,11 @@ char	**map_split2(t_main *main, int column, int line, char *buffer)
 			if (buffer[(y * (line + 1) + x)] == 'E')
 				main->ecount++;
 			else if (buffer[y * (line + 1) + x] == 'P')
+			{
 				main->pcount++;
+				main->player_x = x;
+				main->player_y = y;
+			}
 			else if (buffer[(y * (line + 1) + x)] == 'C')
 				main->ccount++;
 			map[y][x] = buffer[(y * (line + 1) + x)];
