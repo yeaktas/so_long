@@ -20,6 +20,7 @@ t_main	*main_init(char *path)
 	main->map = (t_map *)malloc(sizeof(t_map));
 	main->sprite = (t_sprite *)malloc(sizeof(t_sprite));
 	main->mcount = 0;
+	main->read_count = 0;
 	main->map->map = map_init(path, main);
 	main->mlx = mlx_init();
 	main->win = mlx_new_window(
@@ -36,7 +37,7 @@ int	main(int ac, char **av)
 		ber_checker(av[1]);
 		main = main_init(av[1]);
 		map_check(main);
-		virtual_map(main);
+		virtual_map(main, 0, 0);
 		draw_map(main);
 		mlx_hook(main->win, 2, 1L << 0, key_hook, main);
 		mlx_loop_hook(main->mlx, render, main);
