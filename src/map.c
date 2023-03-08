@@ -44,6 +44,7 @@ char	**map_split2(t_main *main, int column, int line, char *buffer)
 	int		y;
 	int		x;
 
+	x = 0;
 	y = 0;
 	map = (char **) malloc(sizeof(char *) * column);
 	while (y < column)
