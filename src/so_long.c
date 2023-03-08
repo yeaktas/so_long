@@ -37,7 +37,7 @@ int	main(int ac, char **av)
 		ber_checker(av[1]);
 		main = main_init(av[1]);
 		map_check(main);
-		virtual_map(main, 0, 0);
+		virtual_map(main, 0, 0, 0);
 		draw_map(main);
 		mlx_hook(main->win, 2, 1L << 0, key_hook, main);
 		mlx_loop_hook(main->mlx, render, main);

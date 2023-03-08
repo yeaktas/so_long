@@ -64,12 +64,10 @@ static void	print_virtual_map(t_main *main, int **v_map, int y, int x)
 	ft_putstr_fd("\n\n", 1);
 }
 
-void	virtual_map(t_main *main, int y, int x)
+void	virtual_map(t_main *main, int y, int x, int flag)
 {
 	int	**v_map;
-	int	flag;
 
-	flag = 0;
 	v_map = (int **)malloc(sizeof(int *) * main->map->y);
 	while (y < main->map->y)
 	{

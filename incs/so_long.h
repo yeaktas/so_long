@@ -104,6 +104,6 @@ int		key_hook(int keycode, t_main *main);
 int		render(t_main *main);
 
 //Pathfinder
-void	virtual_map(t_main *main, int y, int x);
+void	virtual_map(t_main *main, int y, int x, int flag);
 
 #endif
