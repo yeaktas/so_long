@@ -96,8 +96,9 @@ void	ft_free(t_main *main);
 void	ft_error(char *errormsg, t_main *main);
 void	virtual_map_free(int **v_map, t_main *main);
 int		ft_x_button(t_main *main);
+void	player_xy(t_main *main, int x, int y);
 
-//Event
+// Event
 int		key_hook(int keycode, t_main *main);
 
 //Render
