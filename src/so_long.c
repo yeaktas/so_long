@@ -31,13 +31,15 @@ t_main	*main_init(char *path)
 int	main(int ac, char **av)
 {
 	t_main	*main;
+	int		flag;
 
+	flag = 0;
 	if (ac == 2)
 	{
 		ber_checker(av[1]);
 		main = main_init(av[1]);
 		map_check(main);
-		virtual_map(main, 0, 0, 0);
+		virtual_map(main, 0, 0, flag);
 		draw_map(main);
 		mlx_hook(main->win, 2, 1L << 0, key_hook, main);
 		mlx_loop_hook(main->mlx, render, main);
