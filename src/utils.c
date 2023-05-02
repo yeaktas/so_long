@@ -52,3 +52,10 @@ void	virtual_map_free(int **v_map, t_main *main)
 	}
 	free(v_map);
 }
+
+void	player_xy(t_main *main, int x, int y)
+{
+	main->pcount++;
+	main->player_x = x;
+	main->player_y = y;
+}
