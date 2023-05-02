@@ -49,22 +49,17 @@ char	**map_split2(t_main *main, int column, int line, char *buffer)
 	map = (char **) malloc(sizeof(char *) * column);
 	while (y < column)
 	{
-		x = 0;
+		x = -1;
 		map[y] = (char *) malloc(sizeof(char) * line + 2);
-		while (x < line + 1)
+		while (++x < line + 1)
 		{
 			if (buffer[(y * (line + 1) + x)] == 'E')
 				main->ecount++;
 			else if (buffer[y * (line + 1) + x] == 'P')
-			{
-				main->pcount++;
-				main->player_x = x;
-				main->player_y = y;
-			}
+				player_xy(main, x, y);
 			else if (buffer[(y * (line + 1) + x)] == 'C')
 				main->ccount++;
 			map[y][x] = buffer[(y * (line + 1) + x)];
-			x++;
 		}
 		map[y][x] = '\0';
 		y++;
